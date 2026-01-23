@@ -1,0 +1,3 @@
+This file contains two different projects:
+- In C++, OptionPricer utilises both the Black-Scholes model and Monte-Carlo simulations to price options of varying complexity. All options can be priced with both whilst vanilla options like European puts and calls or any combination of these (for instance a butterfly or straddle option) can be priced using the BS model. Plans to add in other features such as American options.
+- In Python, the other three files are an algo-trading backtesting and validation library that currently utilises an ML trading strategy (though more to be added) which can be saved and utilised on future trades. Trading feature implementation to be added.
