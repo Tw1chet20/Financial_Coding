@@ -1,3 +1,15 @@
-This file contains two different projects:
-- In C++, OptionPricer utilises both the Black-Scholes model and Monte-Carlo simulations to price options of varying complexity. All options can be priced with both whilst vanilla options like European puts and calls or any combination of these (for instance a butterfly or straddle option) can be priced using the BS model. Plans to add in other features such as American options.
-- In Python, the other three files are an algo-trading backtesting and validation library that currently utilises an ML trading strategy (though more to be added) which can be saved and utilised on future trades. Trading feature implementation to be added.
+This file contains three different projects:
+- In Python, the eleven following files are for a project to utilise Trading212's API to implement and automate a trading strategy that buys or sells an amount of stock to reconcile the overall position size to a given value, whilst closing a position if enough predetermined profit or loss is made on the position throughout its lifetime. The points at which to buy or sell the stock are determined by backtesting over a large sample of randomly chosen stocks from the NYSE and NASDAQ, then optimising for which percentage moves worked best on the dataset and extrapolating these percentage moves for a given stock using its historical data and a linear regression model trained on the backtested historical dataset. The files are:
+    - backtests.py (running the backtest to develop the strategy)
+    - strategy.py (building the model from the backtest and flagging strategy signals when the automation is run)
+    - market_data.py (building a class object to handle market data from yfinance)
+    - state_manager.py (building a class object to handle the state tracking of the position)
+    - t212_client.py (building a class object to handle conferring with the Trading212 API and executing strategy)
+    - main.py (implemeting the bot automation to run the strategy passively by utilising built classes)
+    - state.json (storing the position state including PnL)
+    - bot.log (logging the progress of the bot for error management and post bot utilisation analysis)
+    - config.py (storing all the necessary configuration data)
+    - nasdaq.csv (csv file containing tickers on the NASDAQ exchange)
+    - nyse.csv (csv file containing tickers on the NYSE exchange)
+- In C++, OptionPricer.cpp utilises both the Black-Scholes model and Monte-Carlo simulations to price options of varying complexity. All options can be priced with both whilst vanilla options like European puts and calls or any combination of these (for instance a butterfly or straddle option) can be priced using the BS model. Plans to add in other features such as American options.
+- In Python, the three files (AlgoTradingBackTester.py, AlgoTradingRun.py, and AlgoTradingStrategies.py) are an algo-trading backtesting and validation library that currently utilises an ML trading strategy (though more to be added) which can be saved and utilised on future trades. Trading feature implementation to be added.
